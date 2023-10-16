@@ -1,11 +1,12 @@
-export default function Home({ now }: { now: string }) {
-  return <div>SSG {now}</div>;
+export default function Home({ now, foo }: { now: string, foo?: string }) {
+  return <div>SSG {now} - FOO={foo}</div>;
 }
 
 export async function getStaticProps() {
   return {
     props: {
-      now: new Date().toString()
+      now: new Date().toString(),
+      foo: process.env.FOO
     }
   };
 }
